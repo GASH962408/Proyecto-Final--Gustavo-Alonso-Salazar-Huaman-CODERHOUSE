@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet"> <!--Llamo a la API para la ocnversion de monedas-->
+    <link rel="stylesheet" href="style3.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.7/dist/sweetalert2.all.min.js"></script> <!--Libreria sweet alert-->
+</head>
+<body>
+    <header>
+        <a href="#"><img src="img/logo.ico" class="logo"></a> <!--Establecemos la imagen de nuestro logo de la pagina-->
+
+    </header>
+
+    <div class="page-nav">
+        <h1>AUTOG TIENDA VIRTUAL DE SENSORES</h1>
+        <button id="visualizar" class="button-visualizar" onclick="verCarrito()">Ver carrito</button> <!--Cada boton de navegacion esta relacionado con su funcion en js-->
+        <button id="pagar" class="button-pagar" onclick="pay()">Pagar</button>
+        <button id="retornar" class="button-retornar" onclick="retornar()">Retornar</button>
+    </div>
+
+    <div class="page-content"> 
+        <div class="product-container">
+            <h2>Sensor: Capacitivo</h2>
+            <h3>Marca: SIEMENS</h3>
+            <h3>Protocolo: HART 2020</h3>
+            <img src="img/p1.png" />
+            <h1>$500 USD</h1>
+            <button class="button-add" onclick="addcarrito(0,500)">Agregar</button>
+        </div>
+
+        <div class="product-container">
+            <h2>Sensor: Inductivo</h2>
+            <h3>Marca: ABB</h3>
+            <h3>Protocolo: MODBUS 2019</h3>
+            <img src="img/p2.jpg" />
+            <h1>$250 USD</h1>
+            <button class="button-add" onclick="addcarrito(1,250)">Agregar</button>
+        </div>
+
+        <div class="product-container">
+            <h2>Sensor: Presion</h2>
+            <h3>Marca: SCHNEIDER</h3>
+            <h3>Protocolo: HART 2022</h3>
+            <img src="img/p3.jpg" />
+            <h1>$760 USD</h1>
+            <button class="button-add" onclick="addcarrito(2,760)">Agregar</button>
+        </div>
+
+        <div class="product-container">
+            <h2>Sensor: Resistivo</h2>
+            <h3>Marca: ABB</h3>
+            <h3>Protocolo: MODBUS 2018</h3>
+            <img src="img/p4.jpg" />
+            <h1>$150 USD</h1>
+            <button class="button-add" onclick="addcarrito(3,150)">Agregar</button>
+        </div>
+
+        <div class="product-container">
+            <h2>Sensor: Temperatura</h2>
+            <h3>Marca: ABB</h3>
+            <h3>Protocolo: MODBUS 2018</h3>
+            <img src="img/p5.jpg" />
+            <h1>$125 USD</h1>
+            <button class="button-add" onclick="addcarrito(4,125)">Agregar</button>
+        </div>
+
+        <div class="product-container">
+            <h2>Sensor: Capacitivo</h2>
+            <h3>Marca: Schneider</h3>
+            <h3>Protocolo: HART 2020</h3>
+            <img src="img/product-6.jpg" />
+            <h1>$340 USD</h1>
+            <button class="button-add" onclick="addcarrito(5,340)">Agregar</button>
+        </div>
+
+        <div class="product-container">
+            <h2>Sensor: Inductivo</h2>
+            <h3>Marca: Honeywell</h3>
+            <h3>Protocolo: MODBUS 2019</h3>
+            <img src="img/product-7.jpg" />
+            <h1>$130 USD</h1>
+            <button class="button-add" onclick="addcarrito(6,130)">Agregar</button>
+        </div>
+
+        <div class="product-container">
+            <h2>Sensor: Presion</h2>
+            <h3>Marca: ABB</h3>
+            <h3>Protocolo: HART 2022</h3>
+            <img src="img/product-8.jpg" />
+            <h1>$550 USD</h1>
+            <button class="button-add" onclick="addcarrito(7,550)">Agregar</button>
+        </div>
+
+        <div class="product-container">
+            <h2>Sensor: Resistivo</h2>
+            <h3>Marca: Honeywell</h3>
+            <h3>Protocolo: MODBUS 2015</h3>
+            <img src="img/product-9.jpg" />
+            <h1>$175 USD</h1>
+            <button class="button-add" onclick="addcarrito(8,175)">Agregar</button>
+        </div>
+
+        <div class="product-container">
+            <h2>Sensor: Temperatura</h2>
+            <h3>Marca: Schneider</h3>
+            <h3>Protocolo: HART 2013</h3>
+            <img src="img/product-10.jpg" />
+            <h1>$135 USD</h1>
+            <button class="button-add" onclick="addcarrito(9,135)">Agregar</button>
+        </div>
+
+        <div class="product-container">
+            <h2>Sensor: Temperatura</h2>
+            <h3>Marca: Festo</h3>
+            <h3>Protocolo: MODBUS 2017</h3>
+            <img src="img/product-11.jpg" />
+            <h1>$147 USD</h1>
+            <button class="button-add" onclick="addcarrito(10,147)">Agregar</button>
+        </div>
+    </div>
+
+    <div class="conversormon">
+    
+    <h1>Conversor de moneda</h1> <!--Aca hago el DOM del conversor de moneda para usar API -->
+    <img src="img/cambio.jpg" alt="" class="conversor-imagen" style="border: 1px solid #000;">       >
+    <h2>Escoje la moneda y la cantidad para realizar la conversion</h2>
+    
+    <div class="container">
+        <div class="moneda">
+            <select id="moneda-uno"> <!--Selector de opciones para la moneda 1 -->
+                <option value="AUD">AUD</option>
+                <option value="BGN">BGN</option>
+                <option value="BRL">BRL</option>
+                <option value="BSD">BSD</option>
+                <option value="CAD">CAD</option>
+                <option value="CHF">CHF</option>
+                <option value="COP">COP</option>
+                <option value="CZK">CZK</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="ILS">ILS</option>
+                <option value="INR">INR</option>
+                <option value="ISK">ISK</option>
+                <option value="JPY">JPY</option>
+                <option value="NOK">NOK</option>
+                <option value="NZD">NZD</option>
+                <option value="PAB">PAB</option>
+                <option value="PEN">PEN</option>
+                <option value="RUB">RUB</option>
+                <option value="SAR">SAR</option>
+                <option value="USD" selected>USD</option>
+            </select>
+
+            <input 
+            type="number" 
+            id="cantidad-uno" 
+            placeholder="0"  
+            value="1"
+            >
+
+        </div>
+
+        <div class="taza-cambio-container">
+            <button class="btn" id="taza">
+                Cambio
+            </button>
+
+            <div class="cambio" id="cambio"></div>
+
+        </div>
+
+        <div class="moneda">
+            <select id="moneda-dos"> <!--Selector de opciones para la moneda 2 -->
+                <option value="AUD">AUD</option>
+                <option value="BGN">BGN</option>
+                <option value="BRL">BRL</option>
+                <option value="BSD">BSD</option>
+                <option value="CAD">CAD</option>
+                <option value="CHF">CHF</option>
+                <option value="COP">COP</option>
+                <option value="CZK">CZK</option>
+                <option value="EUR" selected>EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="ILS">ILS</option>
+                <option value="INR">INR</option>
+                <option value="ISK">ISK</option>
+                <option value="JPY">JPY</option>
+                <option value="NOK">NOK</option>
+                <option value="NZD">NZD</option>
+                <option value="PAB">PAB</option>
+                <option value="PEN">PEN</option>
+                <option value="RUB">RUB</option>
+                <option value="SAR">SAR</option>
+                <option value="USD">USD</option>
+                
+
+            </select>
+
+            <input 
+            type="number" 
+            id="cantidad-dos" 
+            placeholder="0"  
+            >
+
+        </div>
+    </div>
+    </div>
+    <script src="Tienda.js"></script>
+</body>

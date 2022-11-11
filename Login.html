@@ -1,0 +1,20 @@
+<!DOCTYPE html> <!--En esta parte hago el html de mi inicio de sesion -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Formulario Login</title>
+    <link rel="stylesheet" href="style2.css"> <!--Referencio el estilo de mi pagina Login en style2.css -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.7/dist/sweetalert2.all.min.js"></script><!--Uso de sweet alert -->
+    
+  </head>
+  <body>
+    <section class="form-login">
+      <h5>Iniciar sesion</h5>
+      <input  type="text"     id="USE"  name="usuario"  value="" placeholder="Usuario">  <!--En esta parte creo las partes para que la persona ponga usuario                                                                                      contrasena y les asigno un ID para llamarlas en mi archivo js  -->
+      <input  type="password" id="PAS"  name="contrasena"  value="" placeholder="Contraseña">
+      <input class="buttons"  id="BUT" type="submit" name="Button1" value="Ingresar"> <!--El caso de ingresar es un formato tipo botton  -->
+      <p><a href="#">¿Olvidaste tu Contraseña?</a></p>
+    </section>
+    <script src= "Login.js" > </script>  <!--En esta parte referencio mi archivo js donde estan todos los bucles y tambien los condicionales pedidos.  -->
+  </body>
+</html>
